@@ -14,17 +14,30 @@ contract TasteProtocol  {
         uint256 voteCount;
     }
     struct RecipeRequest {
+        string recipeName;
         uint256 requestEndDate;
-        Recipe winner;
         uint256 reward;
         address requester;
         Recipe[] recipeSubmissions;
+        Recipe winner;
     }
 
     mapping(address => RecipeData[]) public recipeIndex;
-    mapping(string => RecipeRequest) public requests;
+    mapping(uint256 => RecipeRequest) public requests;
+
+    uint256 public idCounter;
+
+    constructor() {
+    }
 
     function requestRecipe(string calldata _recipeName, uint256 _requestEndDate, uint256 _reward) external {
+        RecipeRequest memory newRequest;
+        newRequest.recipeName = _recipeName;
+        newRequest.requestEndDate = _requestEndDate;
+        newRequest.reward = _reward;
+        newRequest.requester = msg.sender;
+        requests[idCounter] = newRequest;
+        idCounter++;
 
     }
 

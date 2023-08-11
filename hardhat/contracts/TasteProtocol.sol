@@ -25,7 +25,7 @@ contract TasteProtocol  {
         Recipe winner;
     }
 
-    mapping(address => RecipeData[]) public recipeIndex;
+    mapping(address => RecipeData[]) public authorRecipeIndex;
     mapping(uint256 => RecipeRequest) public requests;
 
     uint256 public idCounter;
@@ -48,8 +48,22 @@ contract TasteProtocol  {
 
     }
 
-    function fulfilRequest(string calldata _recipeName, string calldata _IPFSFolderURL) external {
+    function fulfilRequest(uint256 _id, string calldata _recipeName, string calldata _IPFSFolderURL) external {
+        
+        RecipeRequest storage r = requests[_id];
+        require(keccak256(abi.encode(r.recipeName)) == keccak256(abi.encode(_recipeName)), "recipe names do not match");
 
+        Recipe memory newRecipe;
+        newRecipe.author = msg.sender;
+        newRecipe.ipfsFolderURL = _IPFSFolderURL;
+
+        r.recipeSubmissions.push(newRecipe);
+
+        RecipeData memory newData;
+        newData._recipeName = _recipeName;
+        newData.arrayIndex = r.recipeSubmissions.length - 1;
+        newData.requestID = _id;
+        authorRecipeIndex[msg.sender].push(newData);
     }
 
     // EAS, hook attestation schema into this

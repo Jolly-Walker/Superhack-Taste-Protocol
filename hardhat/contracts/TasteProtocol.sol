@@ -2,6 +2,8 @@
 pragma solidity ^0.8.17;
 
 import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
+import { SchemaResolver } from "@ethereum-attestation-service/eas-contracts/contracts/resolver/SchemaResolver.sol";
+import { IEAS, Attestation } from "@ethereum-attestation-service/eas-contracts/contracts/IEAS.sol";
 
 contract TasteProtocol  {
 
@@ -38,12 +40,10 @@ contract TasteProtocol  {
     function requestRecipe(string calldata _recipeName, uint256 _requestEndDate, uint256 _reward) external {
 
         IERC20(tokenAddr).safeTransferFrom(msg.sender, address(this), _reward);
-        RecipeRequest memory newRequest;
-        newRequest.recipeName = _recipeName;
-        newRequest.requestEndDate = _requestEndDate;
-        newRequest.reward = _reward;
-        newRequest.requester = msg.sender;
-        requests[idCounter] = newRequest;
+        requests[idCounter].recipeName = _recipeName;
+        requests[idCounter].requestEndDate = _requestEndDate;
+        requests[idCounter].reward = _reward;
+        requests[idCounter].requester = msg.sender;
         idCounter++;
 
     }
@@ -73,7 +73,7 @@ contract TasteProtocol  {
 
     // payout votes
     function decideWinner(uint256 _id, string calldata _recipeName) external {
-        RecipeRequest memory r = requests[_id];
+        RecipeRequest storage r = requests[_id];
         require(keccak256(abi.encode(r.recipeName)) == keccak256(abi.encode(_recipeName)), "recipe names do not match");
         require(block.timestamp >= r.requestEndDate, "Voting period isn't finished");
         uint256 votesToBeat = 0;

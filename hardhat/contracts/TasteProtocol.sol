@@ -1,8 +1,11 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.17;
 
+import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
+
 contract TasteProtocol  {
 
+    using SafeERC20 for IERC20;
     struct RecipeData {
         string  _recipeName;
         uint256 requestID;
@@ -26,11 +29,15 @@ contract TasteProtocol  {
     mapping(uint256 => RecipeRequest) public requests;
 
     uint256 public idCounter;
+    address public tokenAddr;
 
-    constructor() {
+    constructor(address _tokenAddr) {
+        tokenAddr = _tokenAddr;
     }
 
     function requestRecipe(string calldata _recipeName, uint256 _requestEndDate, uint256 _reward) external {
+
+        IERC20(tokenAddr).safeTransferFrom(msg.sender, address(this), _reward);
         RecipeRequest memory newRequest;
         newRequest.recipeName = _recipeName;
         newRequest.requestEndDate = _requestEndDate;

@@ -67,12 +67,26 @@ contract TasteProtocol  {
     }
 
     // EAS, hook attestation schema into this
-    function voteRecipe(string calldata _recipeName, address _recipeAuthor) external {
+    function voteRecipe(uint256 _id, string calldata _recipeName, address _recipeAuthor) external {
 
     }
 
     // payout votes
-    function decideWinner() external {
+    function decideWinner(uint256 _id, string calldata _recipeName) external {
+        RecipeRequest memory r = requests[_id];
+        require(keccak256(abi.encode(r.recipeName)) == keccak256(abi.encode(_recipeName)), "recipe names do not match");
+        require(block.timestamp >= r.requestEndDate, "Voting period isn't finished");
+        uint256 votesToBeat = 0;
+        uint256 winnerIndex = 0;
+        for (uint256 i = 0; i < r.recipeSubmissions.length; i++) {
+            if (r.recipeSubmissions[i].voteCount > votesToBeat) {
+                winnerIndex = i;
+            }
+        }
+        r.winner = r.recipeSubmissions[winnerIndex];
+        requests[_id] = r;
+
+        IERC20(tokenAddr).safeTransfer(r.winner.author, r.reward);
 
     }
 }

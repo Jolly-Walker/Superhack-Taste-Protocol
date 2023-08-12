@@ -6,6 +6,8 @@
   },
   "dependencies": {
     "@ethereum-attestation-service/eas-sdk": "^1.0.0-beta.0",
-    "@openzeppelin/contracts": "^4.9.3"
+    "@openzeppelin/contracts": "^4.9.3",
+    "@web3-storage/w3": "^2.8.0",
+    "web3.storage": "^4.5.5"
   }
 }

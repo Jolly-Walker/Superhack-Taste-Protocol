@@ -1,5 +1,6 @@
 const { Web3Storage, getFilesFromPath, File } = require('web3.storage')
 const fs = require('fs');
+const { web3StorageAccessToken } = require('../secrets.json');
 
 const jsonFileName = "example.json"
 
@@ -95,7 +96,7 @@ function makeStorageClient() {
 }
 
 function getAccessToken() {
-    return ""
+    return web3StorageAccessToken
 }
 
 // We recommend this pattern to be able to use async/await everywhere

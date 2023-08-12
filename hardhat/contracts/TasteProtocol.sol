@@ -67,7 +67,10 @@ contract TasteProtocol is SchemaResolver {
         newRecipe.ipfsFolderURL = _IPFSFolderURL;
 
         r.recipeSubmissions.push(newRecipe);
-
+        
+        for (uint256 i = 0; i < authorRecipeIndex[msg.sender].length; i++) {
+            require(_id != authorRecipeIndex[msg.sender][i].requestID, "only one submission per request");
+        }
         RecipeData memory newData;
         newData._recipeName = _recipeName;
         newData.arrayIndex = r.recipeSubmissions.length - 1;
@@ -80,7 +83,21 @@ contract TasteProtocol is SchemaResolver {
         uint256 _id,
         string memory _recipeName,
         address _recipeAuthor
-    ) internal {}
+    ) internal {
+        RecipeRequest storage r = requests[_id];
+        require(
+            keccak256(abi.encode(r.recipeName)) ==
+                keccak256(abi.encode(_recipeName)),
+            "recipe names do not match"
+        );
+        for (uint256 i = 0; i < r.recipeSubmissions.length; i++) {
+            if (r.recipeSubmissions[i].author == _recipeAuthor) {
+                r.recipeSubmissions[i].voteCount += 1;
+                return;
+            }
+        }
+        require(false, "Author not found");
+    }
 
     // payout votes
     function decideWinner(uint256 _id, string calldata _recipeName) external {

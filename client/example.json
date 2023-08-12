@@ -3,7 +3,7 @@
     "Description": "When you see succulent cooked chicken hanging neatly in a row at a food stall, you are looking at one of the nation's favourite dishes—Hainanese Chicken Rice. A ubiquitous sight in hawker centres across the country, it is also on the menu in many major restaurants and even hotel cafés. All offer the same dish at varying prices: bite-sized slices of chicken—or a whole chicken if you’re eating as a big group—served with fragrant rice, spicy chilli and ginger paste. The recipe for the dish is adapted from early Chinese immigrants from Hainan Island, off the southern coast of China. Back in Hainan, locals call the dish "Wenchang chicken". They use a particular fowl that is bony and fibrous, and serve the chicken with oily rice. A ground green chilli dip rounds off the dish.",
     "Tags": [
         "Chicken",
-        "Rice", 
+        "Rice",
         "Hainanese",
         "Asian", 
         "Singapore"
@@ -52,16 +52,16 @@
                     "Name": "Cook rice in rice cooker",
                     "Description": "Cooking rice in a rice cooker should take about an hour.",
                     "Path": "local/path/to/image/of/cooking/rice"
-                }                
+                }
             ]
         }
     ],
-    "Images": [                
+    "Images": [
         {
             "Name": "Hainanese Chicken Rice stall",
             "Description": "A stall in a typical hawker centre selling Hainanese Chicken Rice.",
             "Path": "local/path/to/image/of/hawker/centre"
-        },                
+        },
         {
             "Name": "Man eating Chicken Rice",
             "Description": "Chicken Rice is one of the most popular dishes in Southeast Asia",

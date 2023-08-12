@@ -126,13 +126,13 @@ contract TasteProtocol is SchemaResolver {
 
     function onAttest(
         Attestation calldata attestation,
-        uint256 value
+        uint256 /*value*/
     ) internal override returns (bool) {
         
-        (address author, string memory recipeName) = abi.decode(attestation.data, (address, string));
-        require(voteMap[value][attestation.attester] == address(0), "attester already voted on this request");
-        voteMap[value][attestation.attester] = author;
-        voteRecipe(value, recipeName, author);
+        (uint256 id, address author, string memory recipeName) = abi.decode(attestation.data, (uint256, address, string));
+        require(voteMap[id][attestation.attester] == address(0), "attester already voted on this request");
+        voteMap[id][attestation.attester] = author;
+        voteRecipe(id, recipeName, author);
         return true;
     }
 

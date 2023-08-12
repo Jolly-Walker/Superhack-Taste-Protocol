@@ -110,8 +110,9 @@ contract TasteProtocol is SchemaResolver, Ownable {
     }
 
     // payout votes
-    function decideWinner(uint256 _id, string calldata _recipeName) external {
+    function decideWinner(uint256 _id, string calldata _recipeName, address _favorite) external {
         RecipeRequest storage r = requests[_id];
+        require(r.requester == msg.sender, "decider not requester");
         require(
             keccak256(abi.encode(r.recipeName)) ==
                 keccak256(abi.encode(_recipeName)),
@@ -123,15 +124,26 @@ contract TasteProtocol is SchemaResolver, Ownable {
         );
         uint256 votesToBeat = 0;
         uint256 winnerIndex = 0;
+        uint256 favoriteIndex = 0;
+
         for (uint256 i = 0; i < r.recipeSubmissions.length; i++) {
             if (r.recipeSubmissions[i].voteCount > votesToBeat) {
                 winnerIndex = i;
+            }
+            if (r.recipeSubmissions[i].author == _favorite) {
+                favoriteIndex = i;
             }
         }
         r.winner = r.recipeSubmissions[winnerIndex];
         requests[_id] = r;
 
-        IERC20(tokenAddr).safeTransfer(r.winner.author, r.reward);
+        if (winnerIndex == favoriteIndex) {
+            IERC20(tokenAddr).safeTransfer(r.winner.author, r.reward);
+        } else {
+            uint256 leftover = r.reward - r.reward / 2;
+            IERC20(tokenAddr).safeTransfer(r.winner.author, r.reward);
+            IERC20(tokenAddr).safeTransfer(r.recipeSubmissions[favoriteIndex].author, leftover);
+        }
     }
 
     function voteRecipe(

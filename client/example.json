@@ -5,7 +5,7 @@
         "Chicken",
         "Rice",
         "Hainanese",
-        "Asian", 
+        "Asian",
         "Singapore"
     ],
     "Ingredients": [
@@ -16,7 +16,7 @@
                 {
                     "Name": "Uncooked Jasmine Rice",
                     "Description": "Picture of uncooked Jasmine Rice",
-                    "Path": "local/path/to/image/of/rice"
+                    "Path": "images/jasmine-rice.jpg"
                 }
             ]
         },
@@ -27,7 +27,7 @@
                 {
                     "Name": "Raw Chicken",
                     "Description": "An entire raw chicken",
-                    "Path": "local/path/to/image/of/chicken"
+                    "Path": "images/raw-chicken.jpg"
                 }
             ]
         }
@@ -40,7 +40,7 @@
                 {
                     "Name": "Raw rice in bowl",
                     "Description": "Wash the rice at least 3 times.",
-                    "Path": "local/path/to/image/of/washing/rice"
+                    "Path": "images/wash-rice.jpg"
                 }
             ]
         },
@@ -51,7 +51,7 @@
                 {
                     "Name": "Cook rice in rice cooker",
                     "Description": "Cooking rice in a rice cooker should take about an hour.",
-                    "Path": "local/path/to/image/of/cooking/rice"
+                    "Path": "images/cook-rice.jpg"
                 }
             ]
         }
@@ -60,12 +60,12 @@
         {
             "Name": "Hainanese Chicken Rice stall",
             "Description": "A stall in a typical hawker centre selling Hainanese Chicken Rice.",
-            "Path": "local/path/to/image/of/hawker/centre"
+            "Path": "images/chicken-rice-stall.jpg"
         },
         {
-            "Name": "Man eating Chicken Rice",
+            "Name": "Hainanese Chicken Rice",
             "Description": "Chicken Rice is one of the most popular dishes in Southeast Asia",
-            "Path": "local/path/to/image/of/chicken/rice"
+            "Path": "images/chicken-rice.jpg"
         }
     ]
 }

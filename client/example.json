@@ -1,0 +1,71 @@
+{
+    "Name": "Chicken Rice",
+    "Description": "When you see succulent cooked chicken hanging neatly in a row at a food stall, you are looking at one of the nation's favourite dishes—Hainanese Chicken Rice. A ubiquitous sight in hawker centres across the country, it is also on the menu in many major restaurants and even hotel cafés. All offer the same dish at varying prices: bite-sized slices of chicken—or a whole chicken if you’re eating as a big group—served with fragrant rice, spicy chilli and ginger paste. The recipe for the dish is adapted from early Chinese immigrants from Hainan Island, off the southern coast of China. Back in Hainan, locals call the dish "Wenchang chicken". They use a particular fowl that is bony and fibrous, and serve the chicken with oily rice. A ground green chilli dip rounds off the dish.",
+    "Tags": [
+        "Chicken",
+        "Rice", 
+        "Hainanese",
+        "Asian", 
+        "Singapore"
+    ],
+    "Ingredients": [
+        {
+            "Name": "White Jasmine Rice",
+            "Description": "Jasmine rice is a long-grain variety of fragrant rice. 500g of white jasmine rice is required.",
+            "Images": [
+                {
+                    "Name": "Uncooked Jasmine Rice",
+                    "Description": "Picture of uncooked Jasmine Rice",
+                    "Path": "local/path/to/image/of/rice"
+                }
+            ]
+        },
+        {
+            "Name": "Chicken",
+            "Description": "The chicken (Gallus domesticus) is a domesticated species that arose from the red junglefowl, originally from India. An entire chicken is required for this recipe.",
+            "Images": [
+                {
+                    "Name": "Raw Chicken",
+                    "Description": "An entire raw chicken",
+                    "Path": "local/path/to/image/of/chicken"
+                }
+            ]
+        }
+    ],
+    "Steps": [
+        {
+            "Name": "Wash the rice",
+            "Description": "Add all of the rice into a large bowl. The bowl should be able to contain all of the rice with extra space for water. Fill the bowl with water, then use your hands to swirl the rice around. Once the water looks cloudy, pour away the cloudy water and repeat the action with more water two more times.",
+            "Images": [
+                {
+                    "Name": "Raw rice in bowl",
+                    "Description": "Wash the rice at least 3 times.",
+                    "Path": "local/path/to/image/of/washing/rice"
+                }
+            ]
+        },
+        {
+            "Name": "Cook the rice",
+            "Description": "Place all of the washed rice into the inner pot of the rice cooker. The rice should be leveled in the rice cooker. Then, add water into the rice cooker until the water level is approximately one centimeter above the rice. Then, place the inner pot into the rice cooker and begin cooking the rice.",
+            "Images": [
+                {
+                    "Name": "Cook rice in rice cooker",
+                    "Description": "Cooking rice in a rice cooker should take about an hour.",
+                    "Path": "local/path/to/image/of/cooking/rice"
+                }                
+            ]
+        }
+    ],
+    "Images": [                
+        {
+            "Name": "Hainanese Chicken Rice stall",
+            "Description": "A stall in a typical hawker centre selling Hainanese Chicken Rice.",
+            "Path": "local/path/to/image/of/hawker/centre"
+        },                
+        {
+            "Name": "Man eating Chicken Rice",
+            "Description": "Chicken Rice is one of the most popular dishes in Southeast Asia",
+            "Path": "local/path/to/image/of/chicken/rice"
+        }
+    ]
+}

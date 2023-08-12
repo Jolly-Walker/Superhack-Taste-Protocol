@@ -19,7 +19,7 @@ module.exports = {
     },
     zoraGoerli: {
       chainId: 999,
-      url : "https://goerli.optimism.io",
+      url : "https://testnet.rpc.zora.energy",
       accounts : [privateKey]
     },
     modeSepolia: {

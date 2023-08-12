@@ -128,6 +128,7 @@ contract TasteProtocol is SchemaResolver, Ownable {
 
         for (uint256 i = 0; i < r.recipeSubmissions.length; i++) {
             if (r.recipeSubmissions[i].voteCount > votesToBeat) {
+                votesToBeat = r.recipeSubmissions[i].voteCount;
                 winnerIndex = i;
             }
             if (r.recipeSubmissions[i].author == _favorite) {
@@ -141,7 +142,7 @@ contract TasteProtocol is SchemaResolver, Ownable {
             IERC20(tokenAddr).safeTransfer(r.winner.author, r.reward);
         } else {
             uint256 leftover = r.reward - r.reward / 2;
-            IERC20(tokenAddr).safeTransfer(r.winner.author, r.reward);
+            IERC20(tokenAddr).safeTransfer(r.winner.author, r.reward / 2);
             IERC20(tokenAddr).safeTransfer(r.recipeSubmissions[favoriteIndex].author, leftover);
         }
     }

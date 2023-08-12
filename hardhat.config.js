@@ -1,5 +1,5 @@
 require("@nomicfoundation/hardhat-toolbox");
-// const { privateKey} = require('./secrets.json');
+const { privateKey} = require('./secrets.json');
 
 module.exports = {
   networks: {

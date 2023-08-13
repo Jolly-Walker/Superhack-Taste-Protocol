@@ -9,6 +9,7 @@ async function main() {
     console.log("Token deployed to :", token.target);
 
     const tasteProtocol = await hre.ethers.deployContract("TasteProtocol", [addr.ZoraGoerliEAS, token.target, false]);
+    await token.waitForDeployment();
     console.log("TasteProtocol deployed to :", tasteProtocol.target);
 
   }

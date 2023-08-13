@@ -8,7 +8,8 @@ async function main() {
     await token.waitForDeployment();
     console.log("Token deployed to :", token.target);
 
-    const tasteProtocol = await hre.ethers.deployContract("TasteProtocol", [addr.OpGoerliEAS, token.target, true]);
+    const tasteProtocol = await hre.ethers.deployContract("TasteProtocol", [addr.BaseGoerliEAS, token.target, true]);
+    await token.waitForDeployment();
     console.log("TasteProtocol deployed to :", tasteProtocol.target);
 
   }
